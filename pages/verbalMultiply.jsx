@@ -7,7 +7,7 @@ import {
   TextField, NoSsr, Container, Typography, Grid, Paper,
 } from '@material-ui/core';
 import { getRandomNaturalInt } from '../Func/mathFunc';
-import { getNumberValue } from '../Func/otherFunc';
+import { getNumberValue, SM_DIV, SM_MULT } from '../Func/otherFunc';
 import Nav from '../Components/Nav';
 import Panel from '../Components/Panel';
 import useStatistic from '../Hooks/useStatistic';
@@ -47,7 +47,7 @@ const reducer = (reducerState, action) => {
     case 'ANSWER': {
       reducerState.addHistory({
         date: new Date(),
-        example: `${reducerState.op1} ${reducerState.operator === 1 ? '*' : '/'} ${
+        example: `${reducerState.op1} ${reducerState.operator === 1 ? SM_MULT : SM_DIV} ${
           reducerState.op2
         } = `,
         answer: reducerState.answer,
@@ -86,12 +86,12 @@ const verbalMultiply = ({ initialState }) => {
   });
   return (
     <Container maxWidth="md">
-      <Nav title="Тренажер устного счета(*,/)" />
+      <Nav title={`Тренажер устного счета(${SM_MULT},${SM_DIV})`} />
       <NoSsr>
         <Paper elevation={10} style={{ margin: 10 }}>
           <Grid container justify="center" alignItems="center">
             <Typography variant="h5" align="center">
-              {`${state.op1} ${state.operator === 1 ? '*' : '/'} ${state.op2} = `}
+              {`${state.op1} ${state.operator === 1 ? SM_MULT : SM_DIV} ${state.op2} = `}
             </Typography>
             <TextField
               size="small"

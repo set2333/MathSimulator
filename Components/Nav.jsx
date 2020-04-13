@@ -12,7 +12,7 @@ import {
   ListItem,
 } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
-import pages from '../Func/pages';
+import { pages } from '../Func/otherFunc';
 
 const Nav = ({ title }) => {
   const [menuIsOpen, setMenuOpen] = useState(false);

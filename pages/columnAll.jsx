@@ -8,7 +8,7 @@ import {
   TextField, NoSsr, Container, Typography, Grid, Paper,
 } from '@material-ui/core';
 import { getRandomInt, getRandomNaturalInt } from '../Func/mathFunc';
-import { getNumberValue } from '../Func/otherFunc';
+import { getNumberValue, SM_MULT, SM_DIV } from '../Func/otherFunc';
 import Nav from '../Components/Nav';
 import Panel from '../Components/Panel';
 import useStatistic from '../Hooks/useStatistic';
@@ -36,9 +36,9 @@ const getSymbolOperator = (operator) => {
     case 2:
       return '-';
     case 3:
-      return '*';
+      return SM_MULT;
     case 4:
-      return '/';
+      return SM_DIV;
     default:
       return '';
   }
@@ -115,7 +115,7 @@ const VerbalCounting = ({ initialState }) => {
   });
   return (
     <Container maxWidth="md">
-      <Nav title="Тренажер устного счета(+,-, *, /)" />
+      <Nav title={`Тренажер устного счета(+,-, ${SM_MULT}, ${SM_DIV})`} />
       <NoSsr>
         <Paper elevation={10} style={{ margin: 10 }}>
           <Grid container justify="center" alignItems="center">

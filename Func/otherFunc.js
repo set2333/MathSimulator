@@ -24,4 +24,19 @@ const nextRating = (allCount, rigthCount, minCount = 10) => {
   return ` (до ${currentRating + 1} больше 10 правильных ответов.)`;
 };
 
-export { getNumberValue, getRating, nextRating };
+const SM_MULT = String.fromCharCode(215);
+const SM_DIV = String.fromCharCode(247);
+
+// Список всех страниц {title:Название страницы, path:Путь к странице}
+const pages = [
+  { titlePage: 'Устный счет(+,-)', path: '/verbalCounting', index: 0 },
+  { titlePage: `Устный счет(${SM_MULT},${SM_DIV})`, path: '/verbalMultiply', index: 1 },
+  { titlePage: `Устный счет(+, -, ${SM_MULT},${SM_DIV})`, path: '/verbalAll', index: 2 },
+  { titlePage: 'Стобиком(+,-)', path: '/columnCounting', index: 3 },
+  { titlePage: `Столбиком(${SM_MULT},${SM_DIV})`, path: '/columnMultiply', index: 4 },
+  { titlePage: `Столбиком(+, -, ${SM_MULT},${SM_DIV})`, path: '/columnAll', index: 5 },
+];
+
+export {
+  getNumberValue, getRating, nextRating, pages, SM_MULT, SM_DIV,
+};

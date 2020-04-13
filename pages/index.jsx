@@ -1,6 +1,6 @@
 // Главная страница.
 import { Button, Container } from '@material-ui/core';
-import pages from '../Func/pages';
+import { pages } from '../Func/otherFunc';
 
 const Home = () => (
   <Container maxWidth="lg">
