@@ -6,4 +6,12 @@ const getRandomInt = (min, max) => Math.round(min - 0.5 + Math.random() * (max -
 // Получение случайного целого числа от 1 до num.
 const getRandomNaturalInt = (num) => getRandomInt(1, num);
 
-export { getRandomInt, getRandomNaturalInt };
+// Получение правильного ответа
+const getAnswer = (op1, op2, operator) => {
+  if (operator === 1) return op1 + op2;
+  if (operator === 2) return op1 - op2;
+  if (operator === 3) return op1 * op2;
+  return op1 / op2;
+};
+
+export { getRandomInt, getRandomNaturalInt, getAnswer };

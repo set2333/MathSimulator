@@ -1,5 +1,5 @@
 // Навигационное меню.
-import { useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   AppBar,
@@ -12,22 +12,25 @@ import {
   ListItem,
 } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
+import Link from 'next/link';
 import { pages } from '../Func/otherFunc';
 
-const Nav = ({ title }) => {
+const Nav = React.memo(({ title }) => {
   const [menuIsOpen, setMenuOpen] = useState(false);
   return (
     <>
       <AppBar position="sticky" style={{ flexGrow: 1, margin: 10, width: 'auto' }}>
         <Toolbar>
-          <IconButton color="inherit">
-            <MenuIcon onClick={() => setMenuOpen(true)} />
+          <IconButton color="inherit" onClick={() => setMenuOpen(true)}>
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" align="center" style={{ color: 'white', flexGrow: 1 }}>
             {title}
           </Typography>
-          <Button color="inherit" href="/">
-            На главную
+          <Button color="inherit">
+            <Link href="/">
+              <a>На главную</a>
+            </Link>
           </Button>
         </Toolbar>
       </AppBar>
@@ -35,14 +38,16 @@ const Nav = ({ title }) => {
         <List>
           {pages.map(({ titlePage, path, index }) => (
             <ListItem key={index}>
-              <Button href={path}>{titlePage}</Button>
+              <Link href={path}>
+                <a>{titlePage}</a>
+              </Link>
             </ListItem>
           ))}
         </List>
       </Drawer>
     </>
   );
-};
+});
 
 Nav.propTypes = {
   title: PropTypes.string,

@@ -72,7 +72,7 @@ const useStatistic = () => {
     </Paper>
   );
   return [
-    () => useCallback(Statistic(), []),
+    Statistic,
     () => {
       dispatch({ type: 'ADD_TRUE_ANSWER' });
     },

@@ -37,6 +37,22 @@ const pages = [
   { titlePage: `Столбиком(+, -, ${SM_MULT},${SM_DIV})`, path: '/columnAll', index: 5 },
 ];
 
+// Возвращаем символ оператора в зависимости от его номера
+const getSymbolOperator = (operator) => {
+  switch (operator) {
+    case 1:
+      return '+';
+    case 2:
+      return '-';
+    case 3:
+      return SM_MULT;
+    case 4:
+      return SM_DIV;
+    default:
+      return '';
+  }
+};
+
 export {
-  getNumberValue, getRating, nextRating, pages, SM_MULT, SM_DIV,
+  getNumberValue, getRating, nextRating, pages, SM_MULT, SM_DIV, getSymbolOperator,
 };
