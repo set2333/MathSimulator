@@ -37,6 +37,8 @@ const NavTest = () => {
   act(() => {
     menuButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
+  const menuTitle = document.querySelector('ul h6');
+  expect(menuTitle.textContent).toBe('Тренажеры');
   const menu = document.getElementsByTagName('li');
   let index = 0;
   for (const li of menu) {

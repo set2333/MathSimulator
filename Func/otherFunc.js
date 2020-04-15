@@ -35,6 +35,9 @@ const pages = [
   { titlePage: 'Стобиком(+,-)', path: '/columnCounting', index: 3 },
   { titlePage: `Столбиком(${SM_MULT},${SM_DIV})`, path: '/columnMultiply', index: 4 },
   { titlePage: `Столбиком(+, -, ${SM_MULT},${SM_DIV})`, path: '/columnAll', index: 5 },
+  { titlePage: 'Обыкновенные дроби(+, -,)', path: '/fractionCounting', index: 6 },
+  { titlePage: `Обыкновенные дроби(${SM_MULT},${SM_DIV})`, path: '/fractionMultiply', index: 7 },
+  { titlePage: `Обыкновенные дроби(+, -, ${SM_MULT},${SM_DIV})`, path: '/fractionAll', index: 8 },
 ];
 
 // Возвращаем символ оператора в зависимости от его номера

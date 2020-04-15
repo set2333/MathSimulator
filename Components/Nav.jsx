@@ -36,11 +36,16 @@ const Nav = React.memo(({ title }) => {
       </AppBar>
       <Drawer ancor="Left" open={menuIsOpen} onClose={() => setMenuOpen(false)}>
         <List>
+          <Typography variant="h6" align="center">
+            Тренажеры
+          </Typography>
           {pages.map(({ titlePage, path, index }) => (
             <ListItem key={index}>
-              <Link href={path}>
-                <a>{titlePage}</a>
-              </Link>
+              <Button variant="contained" style={{ width: '100%' }}>
+                <Link href={path}>
+                  <a>{titlePage}</a>
+                </Link>
+              </Button>
             </ListItem>
           ))}
         </List>
