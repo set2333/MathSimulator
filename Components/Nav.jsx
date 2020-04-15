@@ -14,9 +14,12 @@ import {
 import { Menu as MenuIcon } from '@material-ui/icons';
 import Link from 'next/link';
 import { pages } from '../Func/otherFunc';
+import SelectClass from './SelectClass';
 
 const Nav = React.memo(({ title }) => {
   const [menuIsOpen, setMenuOpen] = useState(false);
+  const [numberClass, setNumbeClass] = useState(0);
+
   return (
     <>
       <AppBar position="sticky" style={{ flexGrow: 1, margin: 10, width: 'auto' }}>
@@ -29,7 +32,7 @@ const Nav = React.memo(({ title }) => {
           </Typography>
           <Button color="inherit">
             <Link href="/">
-              <a>На главную</a>
+              <a style={{ color: 'white' }}>На главную</a>
             </Link>
           </Button>
         </Toolbar>
@@ -39,15 +42,23 @@ const Nav = React.memo(({ title }) => {
           <Typography variant="h6" align="center">
             Тренажеры
           </Typography>
-          {pages.map(({ titlePage, path, index }) => (
-            <ListItem key={index}>
-              <Button variant="contained" style={{ width: '100%' }}>
-                <Link href={path}>
-                  <a>{titlePage}</a>
-                </Link>
-              </Button>
-            </ListItem>
-          ))}
+          <SelectClass numberClass={numberClass} changeClass={(value) => setNumbeClass(value)} />
+          {pages.map(({
+            titlePage, path, index, classes,
+          }) => {
+            if (classes.indexOf(numberClass) !== -1) {
+              return (
+                <ListItem key={index}>
+                  <Button variant="contained" style={{ width: '100%' }}>
+                    <Link href={path}>
+                      <a>{titlePage}</a>
+                    </Link>
+                  </Button>
+                </ListItem>
+              );
+            }
+            return null;
+          })}
         </List>
       </Drawer>
     </>

@@ -1,9 +1,10 @@
-// Примеры на умножение и деление обыкновенных дробей. Все числа не отрицательные.
+// Примеры на сложение, вычитание, умножение и деление обыкновенных дробей. Все числа не
+// отрицательные. В случае с вычитанием уменьшаемое всегда больше вычитаемого. т.е разность > 0.
 
 import { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from '@material-ui/core';
-import { getRandomNaturalInt, getAnswerFraction } from '../Func/mathFunc';
+import { getRandomNaturalInt, getAnswerFraction, compareFraction } from '../Func/mathFunc';
 import { SM_DIV, SM_MULT } from '../Func/otherFunc';
 import Reducer from '../Func/fractionReducer';
 import Nav from '../Components/Nav';
@@ -23,6 +24,22 @@ function GetInitialState() {
   this.intPart2 = getRandomNaturalInt(MAX_OPERAND);
   this.divident2 = getRandomNaturalInt(MAX_OPERAND);
   this.divider2 = getRandomNaturalInt(MAX_OPERAND);
+  if (
+    this.operator === 2
+    && compareFraction(
+      { intPart: this.intPart1, divident: this.divident1, divider: this.divider1 },
+      { intPart: this.intPart2, divident: this.divident2, divider: this.divider2 },
+    ) < 0
+  ) {
+    [this.intPart1, this.divident1, this.divider1, this.intPart2, this.divident2, this.divider2] = [
+      this.intPart2,
+      this.divident2,
+      this.divider2,
+      this.intPart1,
+      this.divident1,
+      this.divider1,
+    ];
+  }
   this.answer = getAnswerFraction(
     { intPart: this.intPart1, divident: this.divident1, divider: this.divider1 },
     { intPart: this.intPart2, divident: this.divident2, divider: this.divider2 },
@@ -44,7 +61,7 @@ const FractionAll = ({ initialState }) => {
   });
   return (
     <Container maxWidth="md">
-      <Nav title={`Обыкновенные дроби(${SM_MULT},${SM_DIV})`} />
+      <Nav title={`Обыкновенные дроби(+,-,${SM_MULT},${SM_DIV})`} />
       <FractionExemple
         operator={state.operator}
         op1={{ intPart: state.intPart1, divident: state.divident1, divider: state.divider1 }}
