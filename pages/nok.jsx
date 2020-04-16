@@ -3,7 +3,7 @@
 import { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from '@material-ui/core';
-import { getRandomInt, getNOD } from '../Func/mathFunc';
+import { getRandomInt, getNOK } from '../Func/mathFunc';
 import Reducer from '../Func/reducers/nodReducer';
 import Nav from '../Components/Nav';
 import Panel from '../Components/Panel';
@@ -17,10 +17,9 @@ const MAX_OPERAND = 20;
 
 // Получение нового примера
 function GetInitialState() {
-  const answer = getRandomInt(MIN_OPERAND, MAX_OPERAND);
-  this.op1 = getRandomInt(MIN_OPERAND, MAX_OPERAND) * answer;
-  this.op2 = getRandomInt(MIN_OPERAND, MAX_OPERAND) * answer;
-  this.answer = getNOD(this.op1, this.op2);
+  this.op1 = getRandomInt(MIN_OPERAND, MAX_OPERAND);
+  this.op2 = getRandomInt(MIN_OPERAND, MAX_OPERAND);
+  this.answer = getNOK(this.op1, this.op2);
   this.userAnswer = null;
 }
 
