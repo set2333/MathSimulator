@@ -4,7 +4,7 @@ import {
   Button, Container, Paper, Grid, Typography,
 } from '@material-ui/core';
 import Link from 'next/link';
-import { pages } from '../Func/otherFunc';
+import pages from '../Func/pages';
 import SelectClass from '../Components/SelectClass';
 
 const Home = () => {

@@ -1,35 +1,31 @@
-// Тренажер устного счета. Примеры на сложение и вычитание чисел от 1 до 10. Все числа ценые и
-// не отрицательные. В случае с вычитанием уменьшаемое всегда больше вычитаемого. т.е разность > 0.
+// Сравнение чисел. Самый простой вариант для первого класса
 
 import { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from '@material-ui/core';
-import { getRandomInt, getRandomNaturalInt, getAnswer } from '../Func/mathFunc';
-import { getSymbolOperator } from '../Func/otherFunc';
-import Reducer from '../Func/reducers/standartReducer';
+import { getRandomInt, getAnswer } from '../Func/mathFunc';
+import Reducer from '../Func/reducers/compareReducer';
 import Nav from '../Components/Nav';
-import Panel from '../Components/Panel';
-import StandartExemple from '../Components/StandartExemple';
+import CompareExemple from '../Components/CompareExemple';
 import useStatistic from '../Hooks/useStatistic';
 import useHistory from '../Hooks/useHistory';
 
 // Максимальное и минимальное значение операндов
 const MIN_OPERAND = 1;
-const MAX_OPERAND = 10;
+const MAX_OPERAND = 20;
 
 // Получение нового примера
 function GetInitialState() {
-  this.operator = getRandomNaturalInt(2);
+  this.operator = 5;
   this.op1 = getRandomInt(MIN_OPERAND, MAX_OPERAND);
   this.op2 = getRandomInt(MIN_OPERAND, MAX_OPERAND);
-  if (this.operator === 2 && this.op1 < this.op2) [this.op1, this.op2] = [this.op2, this.op1];
   this.answer = getAnswer(this.op1, this.op2, this.operator);
-  this.userAnswer = null;
+  this.userAnswer = 0;
 }
 
 const reducer = Reducer(GetInitialState);
 
-const VerbalCounting = ({ initialState }) => {
+const CompareLow = ({ initialState }) => {
   const [Statistic, addTrueAnswer, addFalseAnswer] = useStatistic();
   const [History, addHistory] = useHistory();
   const [state, dispatch] = useReducer(reducer, {
@@ -40,15 +36,12 @@ const VerbalCounting = ({ initialState }) => {
   });
   return (
     <Container maxWidth="md">
-      <Nav title="Тренажер счета столбиком(+,-)" />
-      <StandartExemple
-        example={`${state.op1} ${getSymbolOperator(state.operator)} ${state.op2} = `}
+      <Nav title="Сравнение чисел" />
+      <CompareExemple
+        op1={state.op1}
+        op2={state.op2}
         userAnswer={state.userAnswer}
         dispatch={dispatch}
-      />
-      <Panel
-        dispatch={dispatch}
-        actionTypes={{ setNumber: 'ADD_ANSWER', setAnswer: 'SET_ANSWER', answer: 'ANSWER' }}
       />
       <Statistic />
       <History />
@@ -56,11 +49,11 @@ const VerbalCounting = ({ initialState }) => {
   );
 };
 
-VerbalCounting.propTypes = {
+CompareLow.propTypes = {
   initialState: PropTypes.objectOf(PropTypes.number),
 };
 
-VerbalCounting.defaultProps = {
+CompareLow.defaultProps = {
   initialState: {
     op1: 1,
     op2: 2,
@@ -78,4 +71,4 @@ export function getStaticProps() {
   };
 }
 
-export default VerbalCounting;
+export default CompareLow;

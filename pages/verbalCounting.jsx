@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Container } from '@material-ui/core';
 import { getRandomNaturalInt, getAnswer } from '../Func/mathFunc';
 import { getSymbolOperator } from '../Func/otherFunc';
-import Reducer from '../Func/standartReducer';
+import Reducer from '../Func/reducers/standartReducer';
 import Nav from '../Components/Nav';
 import Panel from '../Components/Panel';
 import StandartExemple from '../Components/StandartExemple';

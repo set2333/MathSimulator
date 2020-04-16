@@ -29,7 +29,7 @@ const NavTest = () => {
   const mainButton = document.querySelector('.MuiButton-root');
   expect(mainButton.textContent).toBe('На главную');
   expect(mainButton.innerHTML).toBe(
-    '<span class="MuiButton-label"><a href="/">На главную</a></span><span class="MuiTouchRipple-root"></span>',
+    '<span class="MuiButton-label"><a style="color: white;" href="/">На главную</a></span><span class="MuiTouchRipple-root"></span>',
   );
 
   // Проверка состава бокового меню

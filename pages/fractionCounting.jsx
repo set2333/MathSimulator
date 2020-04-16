@@ -5,7 +5,7 @@ import { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from '@material-ui/core';
 import { getRandomNaturalInt, getAnswerFraction, compareFraction } from '../Func/mathFunc';
-import Reducer from '../Func/fractionReducer';
+import Reducer from '../Func/reducers/fractionReducer';
 import Nav from '../Components/Nav';
 import FractionExemple from '../Components/FractionExemple';
 import useStatistic from '../Hooks/useStatistic';

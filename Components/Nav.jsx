@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import Link from 'next/link';
-import { pages } from '../Func/otherFunc';
+import pages from '../Func/pages';
 import SelectClass from './SelectClass';
 
 const Nav = React.memo(({ title }) => {

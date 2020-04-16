@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Container } from '@material-ui/core';
 import { getRandomInt, getAnswer } from '../Func/mathFunc';
 import { SM_DIV, SM_MULT, getSymbolOperator } from '../Func/otherFunc';
-import Reducer from '../Func/standartReducer';
+import Reducer from '../Func/reducers/standartReducer';
 import Nav from '../Components/Nav';
 import Panel from '../Components/Panel';
 import StandartExemple from '../Components/StandartExemple';
@@ -29,7 +29,7 @@ function GetInitialState() {
 
 const reducer = Reducer(GetInitialState);
 
-const verbalMultiply = ({ initialState }) => {
+const VerbalMultiply = ({ initialState }) => {
   const [Statistic, addTrueAnswer, addFalseAnswer] = useStatistic();
   const [History, addHistory] = useHistory();
   const [state, dispatch] = useReducer(reducer, {
@@ -56,11 +56,11 @@ const verbalMultiply = ({ initialState }) => {
   );
 };
 
-verbalMultiply.propTypes = {
+VerbalMultiply.propTypes = {
   initialState: PropTypes.objectOf(PropTypes.number),
 };
 
-verbalMultiply.defaultProps = {
+VerbalMultiply.defaultProps = {
   initialState: {
     op1: 1,
     op2: 2,

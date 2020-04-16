@@ -8,16 +8,14 @@
 // addFalseAnswer(function) - добавить в статистику не верный ответ
 // addHistory(function) - сохранить пример в истории
 // }
-import { getNumberValue, getSymbolOperator } from './otherFunc';
+import { getNumberValue } from '../otherFunc';
 
 const Reducer = (GetInitialState) => (reducerState, action) => {
   switch (action.type) {
     case 'ANSWER': {
       reducerState.addHistory({
         date: new Date(),
-        example: `${reducerState.op1} ${getSymbolOperator(reducerState.operator)} ${
-          reducerState.op2
-        } = `,
+        example: `${reducerState.op1} и ${reducerState.op2} = `,
         answer: reducerState.answer,
         userAnswer: reducerState.userAnswer,
       });

@@ -8,6 +8,7 @@ import {
   subtractionFraction,
   multiplicationFraction,
   divisionFraction,
+  getNOK,
 } from '../Func/mathFunc';
 
 const mathFuncTest = () => {
@@ -16,6 +17,9 @@ const mathFuncTest = () => {
   expect(getAnswer(20, 4, 2)).toBe(16);
   expect(getAnswer(20, 4, 3)).toBe(80);
   expect(getAnswer(20, 4, 4)).toBe(5);
+  expect(getAnswer(20, 4, 5)).toBe(1);
+  expect(getAnswer(20, 40, 5)).toBe(-1);
+  expect(getAnswer(20, 20, 5)).toBe(0);
 
   // Тест функции getNOD
   expect(getNOD(20, 0)).toBe(20);
@@ -23,6 +27,13 @@ const mathFuncTest = () => {
   expect(getNOD(3, 4)).toBe(1);
   expect(getNOD(20, 4)).toBe(4);
   expect(getNOD(20, 12)).toBe(4);
+
+  // Тест функции getNOK
+  expect(getNOK(2, 3)).toBe(6);
+  expect(getNOK(10, 12)).toBe(60);
+  expect(getNOK(36, 48)).toBe(144);
+  expect(getNOK(143, 91)).toBe(1001);
+  expect(getNOK(126, 70)).toBe(630);
 
   // Тест функции getNiceFraction
   expect(getNiceFraction(6, 2)).toEqual({

@@ -8,7 +8,7 @@
 // addFalseAnswer(function) - добавить в статистику не верный ответ
 // addHistory(function) - сохранить пример в истории
 // }
-import { getNumberValue, getSymbolOperator } from './otherFunc';
+import { getNumberValue, getSymbolOperator } from '../otherFunc';
 
 const Reducer = (GetInitialState) => (state, action) => {
   switch (action.type) {

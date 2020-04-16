@@ -8,10 +8,23 @@ const getRandomNaturalInt = (num) => getRandomInt(1, num);
 
 // Получение правильного ответа
 const getAnswer = (op1, op2, operator) => {
-  if (operator === 1) return op1 + op2;
-  if (operator === 2) return op1 - op2;
-  if (operator === 3) return op1 * op2;
-  return op1 / op2;
+  switch (operator) {
+    case 1:
+      return op1 + op2;
+    case 2:
+      return op1 - op2;
+    case 3:
+      return op1 * op2;
+    case 4:
+      return op1 / op2;
+    case 5: {
+      if (op1 > op2) return 1;
+      if (op1 < op2) return -1;
+      return 0;
+    }
+    default:
+      return null;
+  }
 };
 
 // Получим наибольший общий делитель
@@ -26,6 +39,11 @@ function getNOD(arg1, arg2) {
   if (result === a) return 1;
   if (result) b = getNOD(b, result);
   return b;
+}
+
+// Получим наименьшее общее кратное
+function getNOK(arg1, arg2) {
+  return (arg1 * arg2) / getNOD(arg1, arg2);
 }
 
 // Получим общий знаменатель
@@ -121,4 +139,5 @@ export {
   getNOD,
   getNiceFraction,
   getFraction,
+  getNOK,
 };
