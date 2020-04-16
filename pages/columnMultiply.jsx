@@ -29,7 +29,7 @@ function GetInitialState() {
 
 const reducer = Reducer(GetInitialState);
 
-const VerbalMultiply = ({ initialState }) => {
+const ColumnMultiply = ({ initialState }) => {
   const [Statistic, addTrueAnswer, addFalseAnswer] = useStatistic();
   const [History, addHistory] = useHistory();
   const [state, dispatch] = useReducer(reducer, {
@@ -56,11 +56,11 @@ const VerbalMultiply = ({ initialState }) => {
   );
 };
 
-VerbalMultiply.propTypes = {
+ColumnMultiply.propTypes = {
   initialState: PropTypes.objectOf(PropTypes.number),
 };
 
-VerbalMultiply.defaultProps = {
+ColumnMultiply.defaultProps = {
   initialState: {
     op1: 1,
     op2: 2,
@@ -78,4 +78,4 @@ export function getStaticProps() {
   };
 }
 
-export default verbalMultiply;
+export default ColumnMultiply;
